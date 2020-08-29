@@ -1,0 +1,114 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+kapt {
+    arguments {
+        // ARouter在Kotlin项目中的配置方式
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+}
+
+dependencies {
+    // core
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api rootProject.ext.androidx["appcompat"]
+    api project(':lib_common:basic_res')
+//    api project(':lib_global')
+    // test
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    def common = rootProject.ext.common
+    def jetpack =  rootProject.ext.jetpack
+    def kotlin =  rootProject.ext.kotlin
+    def androidx =  rootProject.ext.androidx
+    
+    // kotlin
+    api kotlin.ktx
+    api kotlin.stdlib
+    api kotlin.coroutines_android
+
+    // utils
+    api common.AndroidutilCode
+
+    // network
+    api common.retrofit
+    api common.retrofitConverterGson
+    api common.retrofitConverterScalars
+    api common.okhttp3
+    api common.loggingInterceptor
+    api common.glide
+    kapt common.glideCompiler
+
+    // ARouter
+    api common.arouter
+    kapt common.arouterCompiler
+
+    // ui
+    api androidx.constraintlayoutx
+    api common.SmartRefreshLayout
+    api common.SmartRefreshHeader
+    api common.banner
+    api common.brvah
+    api common.AnyLayer
+    api common.flexBox
+    api common.flycoTabLayout
+    api common.CircleImageView
+    api common.LikeButton
+    api common.multipleStatusView
+    api common.AVLoading
+    api common.immersionbarKotlin
+    api androidx.viewpager2
+
+
+    // others
+    api common.jsoup
+    api common.multidex
+
+    // jetpack
+    api jetpack.pagingCommon
+    api jetpack.pagingRuntime
+    api jetpack.navigationFragment
+    api jetpack.navigationUi
+    api jetpack.navigationFragmentKtx
+    api jetpack.lifecycleExt
+    api jetpack.lifecycleViewmodelKtx
+    api jetpack.koinScop
+    api jetpack.KoinViewModel
+    api jetpack.koinFragmet
+
+}

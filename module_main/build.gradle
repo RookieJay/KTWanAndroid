@@ -1,0 +1,20 @@
+//  Module的属性是在每个组件的 build.gradle 文件中配置的，当我们在组件模式开发时，业务组件应处于application属性，
+// 这时的业务组件就是一个 Android App，可以独立开发和调试；而当我们转换到集成模式开发时，业务组件应该处于 library 属性，
+// 这样才能被我们的“app壳工程”所依赖，组成一个具有完整功能的APP；
+// 组件化开发用application
+apply from: '../component_build.gradle'
+
+kapt {
+    arguments {
+        // ARouter在Kotlin项目中的配置方式
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+
+dependencies {
+    // 组件化依赖配置
+    api project(':lib_common')
+    api project(':lib_global')
+    kapt rootProject.ext.common["arouterCompiler"]
+}

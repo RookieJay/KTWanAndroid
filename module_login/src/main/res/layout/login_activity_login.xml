@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_ic_background"
+    tools:context=".LoginActivity">
+
+    <pers.jay.common.ui.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tb_background="@color/trans"
+        app:tb_title="登录"
+        app:tb_title_size="15sp"
+        app:title="@string/login_module_name"
+        app:tb_left_image="@drawable/ic_arrow_back"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/titleBar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/ic_launcher_round"
+        android:tint="@color/white"
+        android:contentDescription="@string/login_module_name" />
+
+    <TextView
+        android:id="@+id/tvLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:text="@string/login_logo_name"/>
+
+    <pers.jay.common.ui.widget.login.AccountInputView
+        android:id="@+id/etAccount"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLogo"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="30dp"
+        tools:drawableStart="@drawable/ic_account"
+        tools:drawablePadding="10dp"
+        android:textColor="@color/colorPrimary"
+        android:hint="@string/login_hint_account"
+        android:textSize="14sp" />
+
+    <pers.jay.common.ui.widget.login.PasswordInputView
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAccount"
+        android:layout_margin="15dp"
+        tools:drawableStart="@drawable/ic_password"
+        android:drawablePadding="10dp"
+        android:textColor="@color/colorPrimary"
+        android:hint="@string/login_hint_password"
+        android:textSize="14sp" />
+
+    <pers.jay.common.ui.widget.login.SubmitView
+        android:id="@+id/btLogin"
+        style="@style/SubmitStyle"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="30dp"
+        app:sv_bindEditText1="@+id/etAccount"
+        app:sv_bindEditText2="@+id/etPassword"
+        android:text="@string/login_bt_login"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

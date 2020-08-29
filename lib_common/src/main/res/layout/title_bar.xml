@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/colorPrimary"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/iv_bar_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_arrow_back"
+        android:theme="@style/RippleButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:contentDescription="TODO"
+        tools:targetApi="lollipop" />
+
+    <TextView
+        android:id="@+id/tv_bar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="@string/common_name"
+        tools:textColor="@color/white"
+        tools:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/iv_bar_right"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:theme="@style/RippleButton"
+        android:tint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:contentDescription="@string/common_name"
+        tools:src="@drawable/ic_scan" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

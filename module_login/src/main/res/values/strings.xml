@@ -1,0 +1,20 @@
+<resources>
+    <string name="login_module_name">登录组件</string>
+    <string name="login_main_name">KTWanAndroid</string>
+    <string name="login_logo_name">WanAndroid</string>
+
+    <string name="login_hint_account">请输入账号</string>
+    <string name="login_hint_password">请输入密码</string>
+
+    <string name="login_bt_login">登录</string>
+    <string name="title_activity_login2">LoginActivity2</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_test">TestActivity</string>
+</resources>
