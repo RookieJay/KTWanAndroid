@@ -2,7 +2,6 @@ package pers.jay.module_main
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.LogUtils
@@ -17,16 +16,12 @@ import pers.jay.lib_global.model.bean.User
 import pers.jay.module_main.databinding.MainActivityMainBinding
 
 @Route(path = RouterPath.main)
-class MainActivity : BaseDBActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil.setContentView<MainActivityMainBinding>(
-            this,
-            R.layout.main_activity_main
-        )
+class MainActivity : BaseDBActivity<MainActivityMainBinding>() {
+
+    private fun mockNavWithParams() {
         val json = AssetUtils.getJson(this, "user.json")
         val user: User = JsonUtils.instance.getJson(json, User::class.java)
-        binding.user = user
+        mBinding.user = user
         Handler().postDelayed(Runnable {
             ARouter.getInstance()
                 .build(RouterPath.login)
@@ -47,10 +42,10 @@ class MainActivity : BaseDBActivity() {
     }
 
     override fun initView(savedInstanceState: Bundle?) {
-
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-
+        mockNavWithParams()
     }
+
 }

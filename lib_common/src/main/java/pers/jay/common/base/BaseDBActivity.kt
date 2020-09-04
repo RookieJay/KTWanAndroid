@@ -3,18 +3,22 @@ package pers.jay.common.base
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.InflateException
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 
 /**
  * 基于DataBinding的基类Activity
  */
-abstract class BaseDBActivity : BaseActivity() {
+abstract class BaseDBActivity<DB : ViewDataBinding> : BaseActivity() {
+
+    protected lateinit var mBinding : DB
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
+        val layoutResId = initLayout(savedInstanceState)
         try {
-            val layoutResId = initLayout(savedInstanceState)
             if (layoutResId != 0) {
-                setContentView(layoutResId)
+                mBinding = DataBindingUtil.setContentView(this, layoutResId)
             }
         } catch (e: Exception) {
             if (e is InflateException) throw e

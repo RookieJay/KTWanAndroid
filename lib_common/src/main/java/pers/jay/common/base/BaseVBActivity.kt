@@ -1,9 +1,8 @@
 package pers.jay.common.base
 
-import android.content.Context
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +12,7 @@ import java.lang.reflect.ParameterizedType
 /**
  * 基于ViewBinding的基类Activity，利用反射获取特定ViewBinding中的inflate方法填充视图
  */
+@Suppress("UNCHECKED_CAST")
 abstract class BaseVBActivity<VB : ViewBinding, VM : ViewModel> : BaseActivity() {
 
     //  这里使用了委托，表示只有使用到instance才会执行该段代码
@@ -22,13 +22,10 @@ abstract class BaseVBActivity<VB : ViewBinding, VM : ViewModel> : BaseActivity()
 
     protected lateinit var mViewModel: VM
 
-    protected lateinit var mContext : Context
-
     protected lateinit var mProgressBar: ProgressBar
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState)
-        mContext = this
         initViewModelByReflect()
 //        initViewModelBySelf()
         initRootView()
