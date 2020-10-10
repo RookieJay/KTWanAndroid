@@ -50,17 +50,17 @@ ext {
 
             //network
             "retrofit"                  : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
-            "retrofitConverterGson"   : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
-            "retrofitConverterScalars": "com.squareup.retrofit2:converter-scalars:${version["retrofitSdkVersion"]}",
-            "retrofitAdapterRxjava"   : "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
-            "retrofitAdapterRxjava2"  : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
+            "retrofitConverterGson"     : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
+            "retrofitConverterScalars"  : "com.squareup.retrofit2:converter-scalars:${version["retrofitSdkVersion"]}",
+            "retrofitAdapterRxjava"     : "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
+            "retrofitAdapterRxjava2"    : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
             "okhttp3"                   : "com.squareup.okhttp3:okhttp:3.12.1",
             "okhttp-urlconnection"      : "com.squareup.okhttp:okhttp-urlconnection:2.0.0",
             "glide"                     : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
-            "glideCompiler"            : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
+            "glideCompiler"             : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
             "glide-loader-okhttp3"      : "com.github.bumptech.glide:okhttp3-integration:${version["glideSdkVersion"]}",
             "picasso"                   : "com.squareup.picasso:picasso:2.5.2",
-            "loggingInterceptor"       : "com.squareup.okhttp3:logging-interceptor:3.4.1",
+            "loggingInterceptor"        : "com.squareup.okhttp3:logging-interceptor:3.4.1",
 
             //view
             "autolayout"                : "com.zhy:autolayout:1.4.5",
@@ -78,9 +78,9 @@ ext {
             "SmartRefreshFooter"        : "com.scwang.smartrefresh:SmartRefreshFooter:${version["smartRefreshVersion"]}",
             "banner"                    : "com.youth.banner:banner:${version["bannerVersion"]}",
             "brvah"                     : "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4",
-            "immersionbarBase"         : "com.gyf.immersionbar:immersionbar:3.0.0-beta05",
-            "immersionbarFragment"     : "com.gyf.immersionbar:immersionbar-components:3.0.0-beta05",
-            "immersionbarKotlin"       : "com.gyf.immersionbar:immersionbar-ktx:3.0.0-beta05",
+            "immersionbarBase"          : "com.gyf.immersionbar:immersionbar:3.0.0-beta05",
+            "immersionbarFragment"      : "com.gyf.immersionbar:immersionbar-components:3.0.0-beta05",
+            "immersionbarKotlin"        : "com.gyf.immersionbar:immersionbar-ktx:3.0.0-beta05",
             "flycoTabLayout"            : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
             "AnyLayer"                  : "com.github.goweii:AnyLayer:3.3.0-androidx",
             "flexBox"                   : "com.google.android:flexbox:1.0.0",
@@ -128,13 +128,13 @@ ext {
             "multidex"                  : "com.android.support:multidex:1.0.3",
             "javax.annotation"          : "javax.annotation:jsr250-api:1.0",
             "arouter"                   : "com.alibaba:arouter-api:1.5.0",
-            "arouterCompiler"          : "com.alibaba:arouter-compiler:1.2.2",
+            "arouterCompiler"           : "com.alibaba:arouter-compiler:1.2.2",
             "progressmanager"           : "me.jessyan:progressmanager:1.5.0",
             "retrofit-url-manager"      : "me.jessyan:retrofit-url-manager:1.4.0",
             "lifecyclemodel"            : "me.jessyan:lifecyclemodel:1.0.1",
             "AndroidAOP"                :  'com.github.zhujiang521:AndroidAOP:1.1.1',
-            "mmkv-static"               : 'com.tencent: mmkv-static:1.1.1',
-            "mmkv"                      : 'com.tencent: mmkv:1.1.1',
+            "mmkvStatic"                : 'com.tencent: mmkv-static:1.2.2',
+            "mmkv"                      : 'com.tencent: mmkv:1.2.2',
             "AndroidutilCode"           : 'com.blankj:utilcode:1.29.0',
             "jsoup"                     : "org.jsoup:jsoup:1.9.2",
 
@@ -244,5 +244,6 @@ ext {
             navigationFragmentKtx   : 'androidx.navigation:navigation-fragment-ktx:2.3.0',
 
             lifecycleExt            : 'androidx.lifecycle:lifecycle-extensions:2.2.0',
+            lifecycleV8             : "androidx.lifecycle:lifecycle-common-java8:2.2.0",
     ]
 }

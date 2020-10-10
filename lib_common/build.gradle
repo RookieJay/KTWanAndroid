@@ -101,6 +101,9 @@ dependencies {
     // others
     api common.jsoup
     api common.multidex
+    // 无法下载 todo 待查
+//    api common.mmkv
+//    api common.mmkvStatic
 
     // jetpack
     api jetpack.pagingCommon
@@ -110,6 +113,7 @@ dependencies {
     api jetpack.navigationFragmentKtx
     api jetpack.lifecycleExt
     api jetpack.lifecycleViewmodelKtx
+    api jetpack.lifecycleV8
     api jetpack.koinScop
     api jetpack.KoinViewModel
     api jetpack.koinFragmet

@@ -6,18 +6,12 @@ import pers.jay.lib_global.service.WanService
 
 object WanHttpClient : NetworkManager() {
 
-    init {
-        baseUrl(Const.WAN_URL)
-        createOkhttpClient()
-        getRetrofit()
-    }
-
-    override fun baseUrl(baseUrl: String) {
-        this.mBaseUrl = baseUrl
+    override fun getBaseUrl(): String {
+        return Const.WAN_URL
     }
 
     fun getWanService(): WanService {
-        return mRetrofit.create(WanService :: class.java)
+        return getApiService(WanService :: class.java)
     }
 
 }

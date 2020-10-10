@@ -14,8 +14,14 @@ interface IView {
      */
     fun initData(savedInstanceState: Bundle?)
 
-    fun showProgressDialog() {}
+    /**
+     * 展示加载
+     */
+    fun showLoading() {}
 
-    fun hideProgressDialog() {}
+    /**
+     * 隐藏加载
+     */
+    fun hideLoading() {}
 
 }

@@ -5,6 +5,7 @@ import android.os.PersistableBundle
 import android.view.InflateException
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import pers.jay.common.lifecycle.ActivityLifecycleObserver
 
 /**
  * 基于DataBinding的基类Activity
@@ -13,8 +14,8 @@ abstract class BaseDBActivity<DB : ViewDataBinding> : BaseActivity() {
 
     protected lateinit var mBinding : DB
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         val layoutResId = initLayout(savedInstanceState)
         try {
             if (layoutResId != 0) {

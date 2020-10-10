@@ -9,15 +9,12 @@ import pers.jay.common.base.BaseViewModel
 import pers.jay.common.utils.AssetUtils
 import pers.jay.common.utils.JsonUtils
 import pers.jay.lib_global.common.Const
-import pers.jay.lib_global.http.WanHttpClient
 import pers.jay.lib_global.model.bean.User
 
 /**
  *类实现了KoinComponent,在该类中,我们就可以通过by inject和get来过去被注入过的对象了.
  */
-class LoginViewModel : BaseViewModel<User>() {
-
-    val wanService = WanHttpClient.getWanService()
+class LoginViewModel : BaseViewModel<User, LoginModel>() {
 
     /**
      * 模拟数据
@@ -37,15 +34,18 @@ class LoginViewModel : BaseViewModel<User>() {
     fun login(account: String, password: String) {
         LogUtils.e("login")
         GlobalScope.launch {
-            val response = wanService.login(account, password)
+            val response = mModel.login(account, password)
             val user = response.data
             if (response.errorCode == Const.HTTP_CODE_SUCCESS) {
                 mLiveData.postValue(user)
             } else {
                 mErrorData.postValue(response.errorMsg)
             }
-
         }
+    }
+
+    override fun initModel(): LoginModel {
+        return LoginModel()
     }
 
 }

@@ -8,16 +8,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-open class BaseViewModel<T> : ViewModel() {
+abstract class BaseViewModel<O : Any, M : BaseModel> : ViewModel() {
 
-    val mLiveData: MutableLiveData<T> = MutableLiveData()
-    val mErrorData: MutableLiveData<String> = MutableLiveData()
+    val mLiveData: MutableLiveData<O> = MutableLiveData()
+    public val mErrorData: MutableLiveData<String> = MutableLiveData()
+    val mModel by lazy {
+        initModel()
+    }
 
     open class UiState<T>(
         val isLoading: Boolean = false,
         val isRefresh: Boolean = false,
         val isSuccess: T? = null,
-        val isError: String?= null
+        val isError: String? = null
     )
 
     open class BaseUiModel<T>(
@@ -40,4 +43,6 @@ open class BaseViewModel<T> : ViewModel() {
             block
         }
     }
+
+    abstract fun initModel(): M
 }

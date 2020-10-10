@@ -14,7 +14,6 @@
             <option value="$PROJECT_DIR$/lib_common" />
             <option value="$PROJECT_DIR$/lib_common/basic_res" />
             <option value="$PROJECT_DIR$/lib_global" />
-            <option value="$PROJECT_DIR$/lib_mvvm" />
             <option value="$PROJECT_DIR$/module_login" />
             <option value="$PROJECT_DIR$/module_main" />
           </set>

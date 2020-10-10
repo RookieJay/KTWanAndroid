@@ -2,6 +2,7 @@ package pers.jay.common.base
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModel
@@ -15,7 +16,7 @@ import java.lang.reflect.ParameterizedType
 @Suppress("UNCHECKED_CAST")
 abstract class BaseVBActivity<VB : ViewBinding, VM : ViewModel> : BaseActivity() {
 
-    //  这里使用了委托，表示只有使用到instance才会执行该段代码
+    // 这里使用了委托，表示只有使用到instance才会执行该段代码
     protected val instance by lazy { this }
 
     protected lateinit var mBinding: VB
@@ -24,7 +25,8 @@ abstract class BaseVBActivity<VB : ViewBinding, VM : ViewModel> : BaseActivity()
 
     protected lateinit var mProgressBar: ProgressBar
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        Log.e(TAG, "initRootView")
         super.onCreate(savedInstanceState)
         initViewModelByReflect()
 //        initViewModelBySelf()
@@ -39,6 +41,7 @@ abstract class BaseVBActivity<VB : ViewBinding, VM : ViewModel> : BaseActivity()
      *  反射，获取特定ViewModel泛型的class
      */
     private fun initViewModelByReflect() {
+        Log.e(TAG, "initRootView")
         val type = javaClass.genericSuperclass
         if (type is ParameterizedType) {
             val clazz = type.actualTypeArguments[1] as Class<VM>
@@ -57,12 +60,14 @@ abstract class BaseVBActivity<VB : ViewBinding, VM : ViewModel> : BaseActivity()
      *  反射，调用特定ViewBinding中的inflate方法填充视图
      */
     private fun initRootView() {
+        Log.e(TAG, "initRootView")
         val type = javaClass.genericSuperclass
         if (type is ParameterizedType) {
             val clazz = type.actualTypeArguments[0] as Class<VB>
             val method = clazz.getMethod("inflate", LayoutInflater::class.java)
             mBinding = method.invoke(null, layoutInflater) as VB
             setContentView(mBinding.root)
+            Log.i(TAG, "initRootView finish.")
         }
     }
 

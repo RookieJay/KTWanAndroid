@@ -31,7 +31,7 @@ class LoginActivity : BaseVBActivity<LoginActivityLoginBinding, LoginViewModel>(
             btLogin.setOnClickListener {
                 val account = etAccount.text
                 val password = etPassword.text
-                showProgressDialog()
+                showLoading()
                 mViewModel.login(account, password)
             }
         }
@@ -51,13 +51,12 @@ class LoginActivity : BaseVBActivity<LoginActivityLoginBinding, LoginViewModel>(
         mViewModel.apply {
             mLiveData.observe(this@LoginActivity, Observer {
                 mBinding.apply {
-                    hideProgressDialog()
+                    hideLoading()
                     showMessage("登录成功，%s", it.username)
-//                    ToastUtils.showShort("登录成功，%s", it.username)
                 }
             })
             mErrorData.observe(this@LoginActivity, Observer {
-                hideProgressDialog()
+                hideLoading()
                 Toast.makeText(mContext, it, Toast.LENGTH_SHORT).show()
             })
         }
@@ -68,12 +67,12 @@ class LoginActivity : BaseVBActivity<LoginActivityLoginBinding, LoginViewModel>(
         return getViewModel()
     }
 
-    override fun showProgressDialog() {
+    override fun showLoading() {
         LogUtils.e("showProgressDialog")
         mProgressBar.visibility = View.VISIBLE
     }
 
-    override fun hideProgressDialog() {
+    override fun hideLoading() {
         LogUtils.e("hideProgressDialog")
         mProgressBar.visibility = View.GONE
     }

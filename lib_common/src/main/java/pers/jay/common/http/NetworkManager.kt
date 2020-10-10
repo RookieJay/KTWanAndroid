@@ -10,16 +10,22 @@ import java.lang.RuntimeException
 import java.util.*
 import java.util.concurrent.TimeUnit
 
+/**
+ * 网络管理类
+ */
 abstract class NetworkManager {
 
     lateinit var mOkHttpClient: OkHttpClient
     lateinit var mRetrofit: Retrofit
-    lateinit var mBaseUrl: String
-
 
     companion object {
         const val READ_WRITE_TIME_OUT = 5000L
         const val CONNECT_TIME_OUT = 3000L
+    }
+
+    init {
+        createOkhttpClient()
+        getRetrofit()
     }
 
     fun createOkhttpClient(): OkHttpClient {
@@ -33,13 +39,14 @@ abstract class NetworkManager {
     }
 
     fun getRetrofit(): Retrofit {
-        if (TextUtils.isEmpty(mBaseUrl)) {
-            throw RuntimeException("baseUrl method must be called first")
+        val baseUrl = getBaseUrl()
+        if (TextUtils.isEmpty(baseUrl)) {
+            throw RuntimeException("baseUrl can not be empty")
         }
         mRetrofit = Retrofit.Builder()
-                            .baseUrl(mBaseUrl)
-                            .addConverterFactory(GsonConverterFactory.create()) //使用Gson
-                            .addConverterFactory(ScalarsConverterFactory.create()) //接收非json字符串build()
+                            .baseUrl(baseUrl)
+                            .addConverterFactory(GsonConverterFactory.create()) // use Gson
+                            .addConverterFactory(ScalarsConverterFactory.create()) // to receive none-json response
                             .client(mOkHttpClient)
                             .build()
         return mRetrofit
@@ -50,6 +57,6 @@ abstract class NetworkManager {
         return mRetrofit.create(tClass)
     }
 
-    abstract fun baseUrl(baseUrl : String)
+    abstract fun getBaseUrl() : String
 
 }

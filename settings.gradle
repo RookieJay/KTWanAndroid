@@ -2,7 +2,6 @@ include ':lib_global'
 include ':module_main'
 rootProject.name='kTWanandroid'
 include ':app'
-include ':lib_mvvm'
 include ':module_login'
 include ':lib_common', ':lib_common:basic_res'
 
