@@ -11,6 +11,7 @@ import com.blankj.utilcode.util.LogUtils
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import pers.jay.common.base.BaseVBActivity
 import pers.jay.common.base.ext.showMessage
+import pers.jay.common.utils.RouteUtils
 import pers.jay.common.utils.SoftInputHelper
 import pers.jay.lib_global.arouter.RouterPath
 import pers.jay.lib_global.common.Const
@@ -53,6 +54,7 @@ class LoginActivity : BaseVBActivity<LoginActivityLoginBinding, LoginViewModel>(
                 mBinding.apply {
                     hideLoading()
                     showMessage("登录成功，%s", it.username)
+                    RouteUtils.nav(RouterPath.main)
                 }
             })
             mErrorData.observe(this@LoginActivity, Observer {

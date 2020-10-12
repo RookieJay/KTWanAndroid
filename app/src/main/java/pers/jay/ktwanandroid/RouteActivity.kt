@@ -2,8 +2,8 @@ package pers.jay.ktwanandroid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.alibaba.android.arouter.launcher.ARouter
 import kotlinx.android.synthetic.main.activity_route.*
+import pers.jay.common.utils.RouteUtils
 import pers.jay.lib_global.arouter.RouterPath
 
 class RouteActivity : AppCompatActivity() {
@@ -20,10 +20,12 @@ class RouteActivity : AppCompatActivity() {
     }
 
     private fun navToMain() {
-        ARouter.getInstance().build(RouterPath.main).navigation()
+        RouteUtils.nav(RouterPath.main)
     }
 
     private fun navToLogin() {
-        ARouter.getInstance().build(RouterPath.login).navigation()
+        RouteUtils.nav(RouterPath.login)
     }
+
+
 }
